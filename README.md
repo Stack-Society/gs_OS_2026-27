@@ -41,7 +41,7 @@ Este repositório documenta a infraestrutura Windows Server que sustenta o Apren
 | Problema, em uma frase | Professores não têm um jeito rápido e padronizado de saber em quais conteúdos cada aluno está abaixo do esperado para a sua série, nem o que fazer a respeito. |
 | Como funciona | O aluno responde a um questionário da sua série (24 questões de Língua Portuguesa e Matemática). O sistema corrige, um modelo de Machine Learning estima a chance de lacuna em cada um dos 8 conteúdos e gera os insights: nível por disciplina, conteúdos a reforçar em ordem de urgência e uma estratégia de estudo para cada um. Casos duvidosos ficam para o professor confirmar. |
 | O que cada parte faz | **IA (Python):** modelo treinado e exportado em ONNX. **API Java:** cadastro de escolas e alunos, correção, execução do modelo, insights e histórico, com banco Oracle. **Infraestrutura (este repositório):** servidor Windows que hospeda a aplicação web, com identidade, arquivos, políticas, acesso remoto, monitoramento, auditoria e recuperação de falhas. |
-| Link do repositório | *[preencher]* |
+| Link do repositório | *https://github.com/Stack-Society/gs_OS_2026-27* |
 | Indicador de impacto | % de alunos com diagnóstico no início do ano; tempo até a intervenção; % de lacunas superadas no questionário seguinte |
 | ODS conectados | ODS 4 (Educação de qualidade) e ODS 10 (Redução das desigualdades) |
 
