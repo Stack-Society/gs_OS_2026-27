@@ -2,7 +2,7 @@
 
 Entrega da disciplina **Operating Systems** da Global Solution 2026.2 (CitizenTech).
 
-Este repositório documenta a infraestrutura Windows Server que sustenta o AprendIA: os serviços do semestre (DNS, Active Directory, File Server, IIS, GPO, RDS e DFS), o monitoramento de CPU, memória e disco, os logs de auditoria e o teste de falha. O vídeo de demonstração está em [`video/`](video/). A documentação completa, com todos os prints comentados, está em [`DOCUMENTACAO_INFRAESTRUTURA.pdf`](DOCUMENTACAO_INFRAESTRUTURA.pdf), e o passo a passo da implantação, em [`ROTEIRO_CONFIGURACAO.md`](ROTEIRO_CONFIGURACAO.md).
+Este repositório documenta a infraestrutura Windows Server que sustenta o AprendIA: os serviços do semestre (DNS, Active Directory, File Server, IIS, GPO, RDS e DFS), o monitoramento de CPU, memória e disco, os logs de auditoria e o teste de falha. O vídeo de demonstração está em [`video/`](video/). A documentação completa, com todos os prints comentados, está em [`DOCUMENTACAO_INFRAESTRUTURA.pdf`](DOCUMENTACAO_INFRAESTRUTURA.pdf), e o passo a passo da implantação, feito pelas telas do VirtualBox e do Windows, em [`ROTEIRO_CONFIGURACAO.md`](ROTEIRO_CONFIGURACAO.md).
 
 ## Sumário
 
@@ -102,7 +102,7 @@ A infraestrutura é o ambiente onde o AprendIA roda dentro de uma escola ou secr
 | SRV01 | controlador de domínio e servidor de aplicação | Windows Server 2025 Standard (Desktop Experience) | 192.168.234.10 | 4 GB RAM, 2 vCPU, disco de 60 GB + disco de dados de 20 GB |
 | CLIENTE01 | estação de teste no domínio | Windows Server 2025 Standard (Desktop Experience) | 192.168.234.100 (DHCP) | 4 GB RAM, 2 vCPU, 60 GB |
 
-A configuração da rede virtual está no P01.
+As duas máquinas virtuais foram criadas e ajustadas pelas telas do VirtualBox Manager (assistente **New** e **Settings**). A configuração da rede virtual está no P01.
 
 ## Serviços configurados
 
@@ -139,7 +139,7 @@ A aplicação web do AprendIA está em [`app/`](app/) e publicada no IIS do SRV0
 | 2 | a confirmar pelo professor | 1 ou 2 | em desenvolvimento |
 | 0 ou 1 | lacuna | 3 ou 4 | abaixo do esperado |
 
-**Publicação:** os arquivos são copiados para `C:\Sites\AprendIA`; a página anterior fica guardada em `C:\Sites\Backup`. Evidências: P36 a P40.
+**Publicação:** os arquivos são copiados pelo Explorador de Arquivos para `C:\Sites\AprendIA`; a página anterior fica guardada em `C:\Sites\Backup`. Evidências: P36 a P40.
 
 ## Permissões e testes de acesso
 
@@ -178,15 +178,15 @@ Em todas as pastas, SYSTEM e Administrators têm Controle total.
 
 ## Tolerância e teste de falha
 
-**Configuração:** os serviços **W3SVC** (IIS) e **WAS** reiniciam sozinhos 1 minuto depois de uma queda, na primeira, na segunda e nas demais falhas. O pool `AprendIA-Pool` fica em `AlwaysRunning` com Rapid-Fail Protection ligada.
+**Configuração:** na aba **Recovery** do `services.msc`, os serviços **W3SVC** (IIS) e **WAS** reiniciam sozinhos 1 minuto depois de uma queda, na primeira, na segunda e nas demais falhas. No IIS Manager, o pool `AprendIA-Pool` fica em `AlwaysRunning` com Rapid-Fail Protection ligada.
 
-**Teste:** um monitor no CLIENTE01 consultou `http://app.aprendia.local` a cada 3 segundos enquanto o processo do serviço W3SVC era encerrado à força no servidor (`taskkill /F`).
+**Teste:** um monitor no CLIENTE01 consultou `http://app.aprendia.local` a cada 3 segundos enquanto o processo do serviço W3SVC era encerrado à força no servidor, como numa falha real.
 
 | Teste | Sintoma | Recuperação | Tempo fora do ar | Evidência |
 |---|---|---|---|---|
 | Queda forçada do serviço W3SVC | o cliente passa de **200** para *timeout* | o Windows registra o evento **7031** e reinicia W3SVC e WAS sozinho | cerca de 1 minuto (atraso configurado) | P27, P28 |
 
-> Encerrar o serviço de forma "limpa" (`Stop-Process`) é registrado como parada normal (evento 7036) e não aciona a recuperação; por isso o teste usa `taskkill /F`, que simula uma queda real. O P27 mostra as duas situações.
+> Parar o serviço de forma "limpa" é registrado como parada normal (evento 7036) e não aciona a recuperação; por isso o teste encerra o processo à força (**End task** no Gerenciador de Tarefas), o que simula uma queda real. O P27 mostra as duas situações.
 
 ## Logs de auditoria e acompanhamento
 
@@ -222,7 +222,7 @@ Em todas as pastas, SYSTEM e Administrators têm Controle total.
 
 ## Evidências
 
-Os prints estão em [`evidencias/prints/`](evidencias/prints/) e as saídas de comandos em [`evidencias/saidas/`](evidencias/saidas/). O PDF traz cada print com a descrição completa.
+Os prints estão em [`evidencias/prints/`](evidencias/prints/) e as saídas de conferência em [`evidencias/saidas/`](evidencias/saidas/). O PDF traz cada print com a descrição completa.
 
 | Print | O que mostra |
 |---|---|
@@ -267,7 +267,7 @@ Os prints estão em [`evidencias/prints/`](evidencias/prints/) e as saídas de c
 | [P39](evidencias/prints/P39-app-resultado-niveis.png) | resultado: nível por disciplina e situação de cada conteúdo |
 | [P40](evidencias/prints/P40-app-resultado-reforco.png) | resultado: conteúdos a reforçar com as estratégias de estudo |
 
-| Saída de comando | Conteúdo |
+| Saída de conferência | Conteúdo |
 |---|---|
 | [`srv01-final.txt`](evidencias/saidas/srv01-final.txt) | `hostname`, `ipconfig /all`, `nslookup` e funções do SRV01 |
 | [`cliente01-final.txt`](evidencias/saidas/cliente01-final.txt) | `hostname`, `ipconfig /all`, `nslookup` e `Test-NetConnection` do cliente |
