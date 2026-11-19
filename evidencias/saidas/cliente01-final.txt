@@ -1,0 +1,43 @@
+﻿CLIENTE01
+
+Windows IP Configuration
+
+   Host Name . . . . . . . . . . . . : CLIENTE01
+   Primary Dns Suffix  . . . . . . . : aprendia.local
+   Node Type . . . . . . . . . . . . : Hybrid
+   IP Routing Enabled. . . . . . . . : No
+   WINS Proxy Enabled. . . . . . . . : No
+   DNS Suffix Search List. . . . . . : aprendia.local
+
+Ethernet adapter Ethernet:
+
+   Connection-specific DNS Suffix  . : aprendia.local
+   Description . . . . . . . . . . . : Intel(R) PRO/1000 MT Desktop Adapter
+   Physical Address. . . . . . . . . : 08-00-27-EB-8A-A2
+   DHCP Enabled. . . . . . . . . . . : Yes
+   Autoconfiguration Enabled . . . . : Yes
+   Link-local IPv6 Address . . . . . : fe80::2891:4076:3faf:f84%5(Preferred) 
+   IPv4 Address. . . . . . . . . . . : 192.168.234.100(Preferred) 
+   Subnet Mask . . . . . . . . . . . : 255.255.255.0
+   Lease Obtained. . . . . . . . . . : Wednesday, November 18, 2026 1:49:31 PM
+   Lease Expires . . . . . . . . . . : Thursday, November 26, 2026 1:49:46 PM
+   Default Gateway . . . . . . . . . : 192.168.234.1
+   DHCP Server . . . . . . . . . . . : 192.168.234.10
+   DHCPv6 IAID . . . . . . . . . . . : 101187623
+   DHCPv6 Client DUID. . . . . . . . : 00-01-01-00-32-8F-48-F6-08-00-27-EB-8A-A2
+   DNS Servers . . . . . . . . . . . : 192.168.234.10
+   NetBIOS over Tcpip. . . . . . . . : Enabled
+Server:  SRV01.aprendia.local
+Address:  192.168.234.10
+
+Name:    app.aprendia.local
+Address:  192.168.234.10
+
+
+ComputerName         RemoteAddress  RemotePort TcpTestSucceeded
+------------         -------------  ---------- ----------------
+srv01.aprendia.local 192.168.234.10         80             True
+srv01.aprendia.local 192.168.234.10        445             True
+srv01.aprendia.local 192.168.234.10       3389             True
+
+

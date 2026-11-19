@@ -1,0 +1,9 @@
+﻿
+Data Collector Set                      Type                          Status
+-------------------------------------------------------------------------------
+AprendIA-Alerta-CPU                     Alert                         Running 
+AprendIA-Alerta-Disco                   Alert                         Running 
+AprendIA-Alerta-Memoria                 Alert                         Running 
+Server Manager Performance Monitor      Counter                       Stopped 
+
+The command completed successfully.

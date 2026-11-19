@@ -1,0 +1,35 @@
+﻿
+Name       Path                           
+----       ----                           
+Financeiro D:\Compartilhamentos\Financeiro
+Projetos   D:\Compartilhamentos\Projetos  
+Publico    D:\Compartilhamentos\Publico   
+
+
+
+
+Name       AccountName                      AccessRight
+----       -----------                      -----------
+Publico    NT AUTHORITY\Authenticated Users        Read
+Financeiro NT AUTHORITY\Authenticated Users      Change
+Projetos   NT AUTHORITY\Authenticated Users      Change
+
+
+
+D:\Compartilhamentos\Financeiro BUILTIN\Administrators:(F)
+                                APRENDIA\GG_Financeiro_RW:(OI)(CI)(M)
+                                BUILTIN\Administrators:(OI)(CI)(F)
+                                NT AUTHORITY\SYSTEM:(OI)(CI)(F)
+
+D:\Compartilhamentos\Projetos BUILTIN\Administrators:(F)
+                              APRENDIA\GG_Projetos_RW:(OI)(CI)(M)
+                              BUILTIN\Administrators:(OI)(CI)(F)
+                              NT AUTHORITY\SYSTEM:(OI)(CI)(F)
+
+D:\Compartilhamentos\Publico BUILTIN\Administrators:(F)
+                             APRENDIA\Domain Users:(OI)(CI)(RX)
+                             BUILTIN\Administrators:(OI)(CI)(F)
+                             NT AUTHORITY\SYSTEM:(OI)(CI)(F)
+
+Successfully processed 3 files; Failed processing 0 files
+
