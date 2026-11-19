@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AprendIA — Diagnóstico de aprendizagem</title>
+  <meta name="description" content="Questionário de diagnóstico de lacunas de aprendizagem em Língua Portuguesa e Matemática.">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <header class="topo">
+    <div class="marca">
+      <span class="marca-icone" aria-hidden="true">A</span>
+      <span class="marca-nome">Aprend<strong>IA</strong></span>
+    </div>
+    <span class="topo-servidor">app.aprendia.local</span>
+  </header>
+
+  <main>
+
+    <!-- Tela 1: identificação do aluno -->
+    <section id="tela-inicio" class="tela ativa" aria-labelledby="titulo-inicio">
+      <div class="cartao cartao-destaque">
+        <h1 id="titulo-inicio">Diagnóstico de aprendizagem</h1>
+        <p class="subtitulo">
+          Responda às 24 questões de Língua Portuguesa e Matemática do 3º ano.
+          Ao final, o professor recebe os conteúdos que precisam de reforço e uma estratégia de estudo para cada um.
+        </p>
+
+        <form id="form-inicio" novalidate>
+          <label for="campo-nome">Nome do aluno</label>
+          <input id="campo-nome" name="nome" type="text" maxlength="60" autocomplete="off" required
+                 placeholder="Ex.: Maria Souza">
+
+          <label for="campo-turma">Turma</label>
+          <input id="campo-turma" name="turma" type="text" maxlength="20" autocomplete="off" required
+                 placeholder="Ex.: 3º A">
+
+          <p id="erro-inicio" class="erro" role="alert" hidden></p>
+
+          <button type="submit" class="botao botao-primario">Começar questionário</button>
+        </form>
+      </div>
+
+      <ul class="resumo-conteudos" aria-label="Conteúdos avaliados">
+        <li><span class="etiqueta etiqueta-lp">Língua Portuguesa</span> decodificação · localizar informação · inferência · ortografia</li>
+        <li><span class="etiqueta etiqueta-mat">Matemática</span> números · operações · geometria · grandezas e medidas</li>
+      </ul>
+    </section>
+
+    <!-- Tela 2: questionário (uma questão por vez) -->
+    <section id="tela-questionario" class="tela" aria-labelledby="enunciado">
+      <div class="progresso" aria-hidden="true">
+        <div id="barra-progresso" class="progresso-barra"></div>
+      </div>
+      <p id="contador" class="contador">Questão 1 de 24</p>
+
+      <div class="cartao">
+        <span id="disciplina-questao" class="etiqueta"></span>
+        <blockquote id="texto-apoio" class="texto-apoio" hidden></blockquote>
+        <h2 id="enunciado" class="enunciado"></h2>
+        <div id="alternativas" class="alternativas" role="radiogroup" aria-labelledby="enunciado"></div>
+      </div>
+
+      <div class="navegacao">
+        <button id="botao-voltar" type="button" class="botao botao-secundario">Voltar</button>
+        <button id="botao-avancar" type="button" class="botao botao-primario" disabled>Próxima</button>
+      </div>
+    </section>
+
+    <!-- Tela 3: resultado do diagnóstico -->
+    <section id="tela-resultado" class="tela" aria-labelledby="titulo-resultado">
+      <div class="cartao cartao-destaque">
+        <h1 id="titulo-resultado">Resultado do diagnóstico</h1>
+        <p id="identificacao" class="subtitulo"></p>
+      </div>
+
+      <div id="niveis" class="grade-niveis"></div>
+
+      <div class="cartao">
+        <h2>Situação por conteúdo</h2>
+        <div id="lista-conteudos" class="lista-conteudos"></div>
+      </div>
+
+      <div class="cartao">
+        <h2>Conteúdos a reforçar</h2>
+        <ol id="lista-reforco" class="lista-reforco"></ol>
+      </div>
+
+      <div class="navegacao">
+        <button id="botao-imprimir" type="button" class="botao botao-secundario">Imprimir</button>
+        <button id="botao-novo" type="button" class="botao botao-primario">Novo diagnóstico</button>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="rodape">
+    AprendIA · CitizenTech · Global Solution 2026.2
+  </footer>
+
+  <script src="dados.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
